@@ -14,24 +14,6 @@ using namespace std;
 
 
 //This helps with testing, do not modify.
-void testConstructor()
-{
-    //Test to make sure that empty objects are set to zero.
-    Roman blank;
-    checkTest("testConstructor #1", 0, blank);
-
-    //Test reading in a number.
-    Roman a("LXVI");
-    checkTest("testConstructor #2", 66, a);
-
-    //Test a bigger number.
-    //Roman b("MMMDDCCLLXXVVII");
-    //checkTest("testConstructor #3", 4332, b);
-
-}
-
-
-//This helps with testing, do not modify.
 bool checkTest(string testName, int whatItShouldBe, const Roman& obj )
 {
     if (whatItShouldBe == obj.value)
@@ -60,9 +42,11 @@ Roman::Roman(const string &str)
 }
 
 void Roman::convertFromRoman(const string &str)
- {
+{
+    unsigned int i = 0, total = 0;
 
-     int i = str.length();
+     i = str.length();
+
     for (int j = 0; j < i; j++)
     {
 
@@ -70,37 +54,31 @@ void Roman::convertFromRoman(const string &str)
         switch (c)
         {
             case 'I':
-                i += 1;
+                total += 1;
                 break;
 
             case 'V':
-                i += 5;
-
+                total += 5;
                 break;
 
             case 'X':
-                i += 10;
-
+                total += 10;
                 break;
 
             case 'L':
-                i += 50;
-
+                total += 50;
                 break;
 
             case 'C':
-                i += 100;
-
+                total += 100;
                 break;
 
             case 'D':
-                i += 500;
-
+                total += 500;
                 break;
 
             case 'M':
-
-                i += 1000;
+                total += 1000;
                 break;
 
 
@@ -108,9 +86,12 @@ void Roman::convertFromRoman(const string &str)
 
 
     }
+    value = total;
+    cout << "Decimal value: " << total << endl;
 }
 
 string Roman::convertToRoman() const
+
 {
     return std::string();
 }
