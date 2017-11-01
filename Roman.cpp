@@ -41,11 +41,16 @@ Roman::Roman(const string &str)
 
 }
 
+/*!
+ * takes the string of roman numerals and converts it to numbers
+ * @param str
+ */
+
 void Roman::convertFromRoman(const string &str)
 {
     unsigned int i = 0, total = 0;
 
-     i = str.length();
+    i = str.length();
 
     for (int j = 0; j < i; j++)
     {
@@ -90,11 +95,33 @@ void Roman::convertFromRoman(const string &str)
     cout << "Decimal value: " << total << endl;
 }
 
-string Roman::convertToRoman() const
+/*!
+ * takes the numbers and converts them into roman numerals
+ * @return
+ */
 
+/*string Roman::convertToRoman() const
 {
-    return std::string();
+    std::string s = std::to_string(value);
+    char arr[s.length()];
+
+    return std::string(s);
+}*/
+
+Roman Roman::operator+(const Roman &) const
+{
+    return Roman();
 }
+
+/*Roman Roman::operator+(Roman a, const int r) const
+{
+    Roman t;
+    int temp = a.value;
+    temp + r;
+    t.value = temp;
+    t.convertToRoman();
+    return Roman(t);
+}*/
 
 //This helps with testing, do not modify.
 bool checkTest(string testName, string whatItShouldBe, string whatItIs )
