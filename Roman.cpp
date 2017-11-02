@@ -85,8 +85,6 @@ void Roman::convertFromRoman(const string &str)
             case 'M':
                 total += 1000;
                 break;
-
-
         }
 
 
@@ -100,18 +98,85 @@ void Roman::convertFromRoman(const string &str)
  * @return
  */
 
-/*string Roman::convertToRoman() const
+string Roman::convertToRoman() const
 {
-    std::string s = std::to_string(value);
-    char arr[s.length()];
+    int temp = value;
+    string roman;
 
-    return std::string(s);
+    while(temp > 0){
+        if(temp > 1000){
+            temp - 1000;
+            roman.append("M");
+        }
+        if(temp > 500){
+            temp - 500;
+            roman.append("D");
+        }
+        if(temp > 100){
+            temp - 100;
+            roman.append("C");
+        }
+        if(temp > 50){
+            temp - 50;
+            roman.append("L");
+        }
+        if(temp > 10){
+            temp - 10;
+            roman.append("X");
+        }
+        if(temp > 5){
+            temp - 5;
+            roman.append("V");
+        }
+        if(temp > 1){
+            temp - 1;
+            roman.append("I");
+        }
+    }
+
+
+    return std::string();
+}
+
+/*Roman Roman::operator+(const Roman &) const
+{
+    Roman t;
+    t.value = a.value + b.value;
+    t.convertToRoman();
+    return Roman(t);
 }*/
 
-Roman Roman::operator+(const Roman &) const
-{
+/*Roman Roman::operator+(Roman, const int) const {
+    Roman a, t;
+    int temp;
+    t.value = a.value + temp;
+    return Roman(t);
+}*/
+
+/*Roman Roman::operator++() {
+    int temp = Roman().value;
+    ++temp;
+    value = temp;
     return Roman();
-}
+}*/
+
+/*void Roman::operator+=(Roman a, const int r) {
+    Roman t;
+    int temp = a.value;
+    temp + r;
+    t.value = temp;
+    t.convertToRoman();
+    return;
+}*/
+
+/*void Roman::operator+=(const Roman a, const int r) {
+    Roman t;
+    int temp = a.value;
+    temp + r;
+    t.value = temp;
+    t.convertToRoman();
+    return;
+}*/
 
 /*Roman Roman::operator+(Roman a, const int r) const
 {

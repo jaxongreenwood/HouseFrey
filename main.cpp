@@ -14,8 +14,8 @@ int main()
 {
 
     testConstructor();
-    testOperatorPlus();
-
+    //testOperatorPlus();
+    //testOperatorPlusEqual();
 
     return 0;
 }
@@ -35,7 +35,7 @@ void testConstructor()
     checkTest("testConstructor #3", 4332, b);
 }
 
-void testOperatorPlus()
+/*void testOperatorPlus()
 {
     //Test adding two roman objects
     Roman a("XVI");
@@ -47,15 +47,14 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #3", 1666, b);
 
     //Test adding an object with an int
-    //c = a + 52;
-    //checkTest("testOperatorPlus #4", 68, c);
+    c = a + 52;
+    checkTest("testOperatorPlus #4", 68, c);
     //make sure the left operand wasn't modified
-    //checkTest("testOperatorPlus #5", 16, a);
+    checkTest("testOperatorPlus #5", 16, a);
 
     //Test adding an int with an object
-    //c = 578 + a;
-    //checkTest("testOperatorPlus #6", 594, c);
-    //make sure the right operand wasn't modified
-    //checkTest("testOperatorPlus #7", 16, a);
+    c = 578 + a;
+    checkTest("testOperatorPlus #6", 594, c);
+    //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);
 
-}
+}*/
