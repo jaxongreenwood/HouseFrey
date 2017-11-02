@@ -31,7 +31,6 @@ public:
     friend bool checkTest(string, int, const Roman&);
     friend void testOutput();
 };
-
-
+ void testOutput();
 
 #endif //HOUSEFREY_ROMAN_H
