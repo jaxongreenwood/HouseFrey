@@ -140,19 +140,15 @@ string Roman::convertToRoman() const
 
 Roman Roman::operator+(const Roman &)
 {
-    int temp = value + value;
-    value = temp;
     Roman t;
-    t.value = temp;
-    t.convertToRoman();
+    t.value = value + value;
     return t;
 }
 
-/*Roman Roman::operator+(Roman, const int) const {
-    Roman a, t;
-    int temp;
-    t.value = a.value + temp;
-    return Roman(t);
+ /*Roman Roman::operator+(Roman r, const int i) const {
+     Roman t;
+     t.value = r.value + i;
+     return t;
 }*/
 
 Roman Roman::operator++() {
@@ -161,6 +157,12 @@ Roman Roman::operator++() {
     t.value = value;
     return t;
 }
+
+/*Roman Roman::operator+(unsigned int i, Roman r) {
+    Roman t;
+    t.value = i + r.value;
+    return t;
+}*/
 
 /*void Roman::operator+=(Roman a, const int r) {
     Roman t;
@@ -243,13 +245,13 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #3", 1666, b);
 
     //Test adding an object with an int
-    /*c = a + 52;
+   /* c = a + 52;
     checkTest("testOperatorPlus #4", 68, c);
     //make sure the left operand wasn't modified
-    checkTest("testOperatorPlus #5", 16, a);
+    checkTest("testOperatorPlus #5", 16, a);*/
 
     //Test adding an int with an object
-    c = 578 + a;
+   /* c = 578 + a;
     checkTest("testOperatorPlus #6", 594, c);
     //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);*/
 
