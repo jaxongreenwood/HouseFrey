@@ -138,13 +138,15 @@ string Roman::convertToRoman() const
     return std::string();
 }
 
-/*Roman Roman::operator+(const Roman &) const
+Roman Roman::operator+(const Roman &)
 {
+    int temp = value + value;
+    value = temp;
     Roman t;
-    t.value = a.value + b.value;
+    t.value = temp;
     t.convertToRoman();
     return Roman(t);
-}*/
+}
 
 /*Roman Roman::operator+(Roman, const int) const {
     Roman a, t;
