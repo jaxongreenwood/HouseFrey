@@ -18,6 +18,7 @@ public:
     Roman();    //Default constructor
     Roman(const string&);  //The constructor which accepts a string and  converts it internally to an integer.  It actually just forwards it onto convertFromRoman()
 
+
     Roman operator+(const Roman &);
    //Roman operator+(Roman, const int) const;
    //void operator +=(const Roman&);  //The left and right operands are Roman objects, but the left operand can change.
