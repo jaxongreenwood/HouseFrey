@@ -145,7 +145,7 @@ Roman Roman::operator+(const Roman &)
     Roman t;
     t.value = temp;
     t.convertToRoman();
-    return Roman(t);
+    return t;
 }
 
 /*Roman Roman::operator+(Roman, const int) const {
@@ -155,12 +155,12 @@ Roman Roman::operator+(const Roman &)
     return Roman(t);
 }*/
 
-/*Roman Roman::operator++() {
-    int temp = Roman().value;
-    ++temp;
-    value = temp;
-    return Roman();
-}*/
+Roman Roman::operator++() {
+    Roman t;
+    ++value;
+    t.value = value;
+    return t;
+}
 
 /*void Roman::operator+=(Roman a, const int r) {
     Roman t;
@@ -204,4 +204,53 @@ bool checkTest(string testName, string whatItShouldBe, string whatItIs )
                  "  Output should have contained: " << whatItShouldBe << endl;
         return false;
     }
+}
+
+void testOperatorIncrement()
+{
+//Test prefix increment
+    Roman a("MLII");
+    Roman b("DDCCI");
+    b = ++a;
+    checkTest("testOperatorIncrement #1", 1053, a);
+    checkTest("testOperatorIncrement #2", 1053, b);
+}
+
+void testConstructor()
+{
+    //Test to make sure that empty objects are set to zero.
+    Roman blank;
+    checkTest("testConstructor #1", 0, blank);
+
+    //Test reading in a number.
+    Roman a("LXVI");
+    checkTest("testConstructor #2", 66, a);
+
+    //Test a bigger number.
+    Roman b("MMMDDCCLLXXVVII");
+    checkTest("testConstructor #3", 4332, b);
+}
+
+void testOperatorPlus()
+{
+    //Test adding two roman objects
+    Roman a("XVI");
+    Roman b("MDCLXVI");
+    Roman c = a + b;
+    checkTest("testOperatorPlus #1", 1682, c);
+    //make sure the left and right operands weren't modified
+    checkTest("testOperatorPlus #2", 16, a);
+    checkTest("testOperatorPlus #3", 1666, b);
+
+    //Test adding an object with an int
+    /*c = a + 52;
+    checkTest("testOperatorPlus #4", 68, c);
+    //make sure the left operand wasn't modified
+    checkTest("testOperatorPlus #5", 16, a);
+
+    //Test adding an int with an object
+    c = 578 + a;
+    checkTest("testOperatorPlus #6", 594, c);
+    //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);*/
+
 }

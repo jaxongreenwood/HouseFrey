@@ -22,7 +22,7 @@ public:
    //Roman operator+(Roman, const int) const;
    //void operator +=(const Roman&);  //The left and right operands are Roman objects, but the left operand can change.
    //void operator +=(Roman a, const int r);  //The left operand is a Roman object, the right is an int number.  The left operand can change.
-   //Roman operator++();  //The prefix ++ operator
+    Roman operator++();  //The prefix ++ operator
     friend bool checkTest(string, int, const Roman&);
     friend void testOutput();
 };
