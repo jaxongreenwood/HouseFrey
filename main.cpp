@@ -9,15 +9,20 @@ using namespace std;
 void testConstructor();
 //void testOperatorPlus();
 void testOperatorIncrement();
+void testOperatorPlusEqual();
+void testOutput();
+
 
 // Class Definition
 int main()
 {
 
-    //testConstructor();
+    testConstructor();
     //testOperatorPlus();
-    //testOperatorPlusEqual();
+    testOperatorPlusEqual();
     testOperatorIncrement();
+    testOutput();
+
 
     return 0;
 }

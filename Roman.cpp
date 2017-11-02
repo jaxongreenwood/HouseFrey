@@ -145,11 +145,12 @@ Roman Roman::operator+(const Roman &)
     return t;
 }
 
- /*Roman Roman::operator+(Roman r, const int i) const {
+ Roman Roman::operator+(const int i) {
      Roman t;
-     t.value = r.value + i;
+     int temp = getValue() + i;
+     t.setValue(temp);
      return t;
-}*/
+}
 
 Roman Roman::operator++() {
     Roman t;
@@ -158,29 +159,31 @@ Roman Roman::operator++() {
     return t;
 }
 
-/*Roman Roman::operator+(unsigned int i, Roman r) {
+/*Roman Roman::operator+(int i, Roman r) {
     Roman t;
-    t.value = i + r.value;
+    int temp = i + r.getValue();
+    t.setValue(temp);
     return t;
 }*/
 
-/*void Roman::operator+=(Roman a, const int r) {
-    Roman t;
-    int temp = a.value;
-    temp + r;
-    t.value = temp;
-    t.convertToRoman();
-    return;
-}*/
+unsigned int Roman::getValue() const {
+    return value;
+}
 
-/*void Roman::operator+=(const Roman a, const int r) {
+void Roman::setValue(unsigned int value) {
+    Roman::value = value;
+}
+
+
+Roman Roman::operator+=(const Roman& r) {
     Roman t;
-    int temp = a.value;
-    temp + r;
-    t.value = temp;
-    t.convertToRoman();
-    return;
-}*/
+    value += r.getValue();
+    return t;
+}
+
+void Roman::operator+=(const int r) {
+    value += r;
+}
 
 /*Roman Roman::operator+(Roman a, const int r) const
 {
@@ -245,14 +248,40 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #3", 1666, b);
 
     //Test adding an object with an int
-   /* c = a + 52;
+    c = a + 52;
     checkTest("testOperatorPlus #4", 68, c);
     //make sure the left operand wasn't modified
-    checkTest("testOperatorPlus #5", 16, a);*/
+    checkTest("testOperatorPlus #5", 16, a);
 
     //Test adding an int with an object
    /* c = 578 + a;
     checkTest("testOperatorPlus #6", 594, c);
     //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);*/
 
+}
+
+void testOperatorPlusEqual()
+{
+//Test adding two roman objects
+    Roman a("MLII");
+    Roman b("DDCCI");
+    a += b;
+    checkTest("testOperatorPlusEqual #1", 2253, a);
+//make sure the right operand wasn't modified
+    checkTest("testOperatorPlusEqual #2", 1201, b);
+//Test adding on an integer
+    b += 17;
+    checkTest("testOperatorPlusEqual #3", 1218, b);
+}
+
+void testOutput()
+{
+    Roman a("MDCLXVI");
+    string b = a.convertToRoman();
+    checkTest("testOutput #1", "MDCLXVI", b);
+//This is really the value 7.  Your code should correctly read this
+    //in and convert it back to VII.
+            Roman c("IIIIIII");
+    b = c.convertToRoman();
+    checkTest("testOutput #2", "VII", b);
 }
