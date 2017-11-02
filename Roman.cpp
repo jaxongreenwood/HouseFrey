@@ -98,42 +98,48 @@ void Roman::convertFromRoman(const string &str)
  * @return
  */
 
-string Roman::convertToRoman() const
-{
+string Roman::convertToRoman() const {
     int temp = value;
     string roman;
 
-    while(temp > 0){
-        if(temp > 1000){
-            temp - 1000;
+    while (temp > 0){
+        while (temp > 1000){
+            temp -= 1000;
             roman.append("M");
-        } else if(temp > 500){
-            temp - 500;
+        }
+        while (temp > 500){
+            temp -= 500;
             roman.append("D");
-        } else if(temp > 100){
-            temp - 100;
+        }
+        while (temp > 100) {
+            temp -= 100;
             roman.append("C");
-        } else if(temp > 50){
-            temp - 50;
+        }
+        while (temp > 50) {
+            temp -= 50;
             roman.append("L");
-        } else if(temp > 10){
-            temp - 10;
+        }
+        while (temp > 10) {
+            temp -= 10;
             roman.append("X");
-        } else if(temp > 5){
-            temp - 5;
+        }
+        while (temp > 5) {
+            temp -= 5;
             roman.append("V");
-        }else if(temp > 1){
-            temp - 1;
+        }
+        while (temp >= 1) {
+            temp -= 1;
             roman.append("I");
         }
     }
+
     return roman;
 }
 
-Roman Roman::operator+(const Roman &)
+Roman Roman::operator+(const Roman &r)
 {
     Roman t;
-    t.value = value + value;
+    t.value = r.value + value;
     return t;
 }
 
@@ -175,16 +181,6 @@ Roman Roman::operator+=(const Roman& r) {
 void Roman::operator+=(const int r) {
     value += r;
 }
-
-/*Roman Roman::operator+(Roman a, const int r) const
-{
-    Roman t;
-    int temp = a.value;
-    temp + r;
-    t.value = temp;
-    t.convertToRoman();
-    return Roman(t);
-}*/
 
 //This helps with testing, do not modify.
 bool checkTest(string testName, string whatItShouldBe, string whatItIs )
@@ -247,7 +243,8 @@ void testOperatorPlus()
     //Test adding an int with an object
     c = 578 + a;
     checkTest("testOperatorPlus #6", 594, c);
-    //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);
+    //make sure the right operand wasn't modified/
+    checkTest("testOperatorPlus #7", 16, a);
 
 }
 
@@ -270,7 +267,7 @@ void testOutput()
     Roman a("MDCLXVI");
     string b = a.convertToRoman();
     checkTest("testOutput #1", "MDCLXVI", b);
-//This is really the value 7.  Your code should correctly read this
+    //This is really the value 7.  Your code should correctly read this
     //in and convert it back to VII.
             Roman c("IIIIIII");
     b = c.convertToRoman();
