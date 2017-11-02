@@ -7,7 +7,7 @@ using namespace std;
 
 //Function Prototype
 void testConstructor();
-//void testOperatorPlus();
+void testOperatorPlus();
 void testOperatorIncrement();
 void testOperatorPlusEqual();
 void testOutput();
@@ -18,7 +18,7 @@ int main()
 {
 
     testConstructor();
-    //testOperatorPlus();
+    testOperatorPlus();
     testOperatorPlusEqual();
     testOperatorIncrement();
     testOutput();

@@ -24,7 +24,7 @@ public:
 
     Roman operator+(const Roman &);
     Roman operator+(const int);
-    //Roman operator+(int i, Roman r);
+    friend Roman operator+(const int i, Roman &r);
     Roman operator +=(const Roman& r);  //The left and right operands are Roman objects, but the left operand can change.
     void operator +=(const int r);  //The left operand is a Roman object, the right is an int number.  The left operand can change.
     Roman operator++();  //The prefix ++ operator

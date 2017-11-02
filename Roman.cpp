@@ -107,35 +107,27 @@ string Roman::convertToRoman() const
         if(temp > 1000){
             temp - 1000;
             roman.append("M");
-        }
-        if(temp > 500){
+        } else if(temp > 500){
             temp - 500;
             roman.append("D");
-        }
-        if(temp > 100){
+        } else if(temp > 100){
             temp - 100;
             roman.append("C");
-        }
-        if(temp > 50){
+        } else if(temp > 50){
             temp - 50;
             roman.append("L");
-        }
-        if(temp > 10){
+        } else if(temp > 10){
             temp - 10;
             roman.append("X");
-        }
-        if(temp > 5){
+        } else if(temp > 5){
             temp - 5;
             roman.append("V");
-        }
-        if(temp > 1){
+        }else if(temp > 1){
             temp - 1;
             roman.append("I");
         }
     }
-
-
-    return std::string();
+    return roman;
 }
 
 Roman Roman::operator+(const Roman &)
@@ -159,12 +151,11 @@ Roman Roman::operator++() {
     return t;
 }
 
-/*Roman Roman::operator+(int i, Roman r) {
+Roman operator+(const int i, Roman &r) {
     Roman t;
-    int temp = i + r.getValue();
-    t.setValue(temp);
+    t.value = i + r.value;
     return t;
-}*/
+}
 
 unsigned int Roman::getValue() const {
     return value;
@@ -254,9 +245,9 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #5", 16, a);
 
     //Test adding an int with an object
-   /* c = 578 + a;
+    c = 578 + a;
     checkTest("testOperatorPlus #6", 594, c);
-    //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);*/
+    //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);
 
 }
 
