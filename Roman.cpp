@@ -137,18 +137,80 @@ string Roman::convertToRoman() const
 
     return std::string();
 }
-
-Roman Roman::operator+(const Roman &)
+//This helps with testing, do not modify.
+void testConstructor()
 {
-    int temp = value + value;
-    value = temp;
+    //Test to make sure that empty objects are set to zero.
+    Roman blank;
+    checkTest("testConstructor #1", 0, blank);
+
+    //Test reading in a number.
+    Roman a("LXVI");
+    checkTest("testConstructor #2", 66, a);
+
+    //Test a bigger number.
+    Roman b("MMMDDCCLLXXVVII");
+    checkTest("testConstructor #3", 4332, b);
+}
+Roman Roman::operator+(const Roman &r)
+{
     Roman t;
-    t.value = temp;
-    t.convertToRoman();
-    return Roman(t);
+    t.value = r.value + value;
+    return t;
 }
 
-/*Roman Roman::operator+(Roman, const int) const {
+Roman Roman::operator+(const int i)const
+{
+    Roman t;
+    int temp;
+    temp = getValue() + i;
+    t.setValue(temp);
+    return t;
+}
+
+unsigned int Roman::getValue() const
+{
+    return value;
+}
+
+void Roman::setValue(unsigned int value)
+{
+    Roman::value = value;
+}
+
+Roman Roman::operator+(const int i, const Roman &r)
+{
+
+    return Roman();
+}
+
+void testOperatorPlus()
+{
+    //Test adding two roman objects
+    Roman a("XVI");
+    Roman b("MDCLXVI");
+    Roman c = a + b;
+    checkTest("testOperatorPlus #1", 1682, c);
+    //make sure the left and right operands weren't modified
+    checkTest("testOperatorPlus #2", 16, a);
+    checkTest("testOperatorPlus #3", 1666, b);
+
+
+    //Test adding an object with an int
+    c = a + 52;
+    checkTest("testOperatorPlus #4", 68, c);
+    //make sure the left operand wasn't modified
+    checkTest("testOperatorPlus #5", 16, a);
+
+    //Test adding an int with an object
+    /*c = 578 + a;
+    checkTest("testOperatorPlus #6", 594, c);
+    //make sure the right operand wasn't modified/checkTest("testOperatorPlus #7", 16, a);*/
+
+}
+
+/*Roman Roman::operator+(Roman, const int) const
+ * {
     Roman a, t;
     int temp;
     t.value = a.value + temp;
