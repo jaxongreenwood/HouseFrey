@@ -200,7 +200,7 @@ bool checkTest(string testName, string whatItShouldBe, string whatItIs )
     }
     else
     {
-        cout << "****** Failed test " << testName << " ****** " << endl << " Object contained: "<< whatItIs << endl <<
+        cout << "****** Failed  test " << testName << " ****** " << endl << " Object contained: "<< whatItIs << endl <<
                  "  Output should have contained: " << whatItShouldBe << endl;
         return false;
     }
