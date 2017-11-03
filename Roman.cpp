@@ -141,7 +141,7 @@ string Roman::convertToRoman() const {
     return roman;
 }
 /*!
- *
+ * operator for adding a roman to a roman
  * @param r
  * @return
  */
@@ -152,7 +152,7 @@ Roman Roman::operator+(const Roman &r)
     return t;
 }
 /*!
- *
+ * operator for adding an int to an roman
  * @param i
  * @return
  */
@@ -164,7 +164,7 @@ Roman Roman::operator+(const int i)
      return t;
 }
 /*!
- *
+ * operator for the increment
  * @return
  */
 Roman Roman::operator++()
@@ -175,7 +175,7 @@ Roman Roman::operator++()
     return t;
 }
 /*!
- *
+ * operator for adding an roman to an int
  * @param i
  * @param r
  * @return
@@ -203,7 +203,7 @@ void Roman::setValue(unsigned int value)
     Roman::value = value;
 }
 /*!
- *plus equals function
+ * plus equals function
  * @param r
  * @return t
  */
