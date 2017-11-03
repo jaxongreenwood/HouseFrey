@@ -8,10 +8,23 @@
 #include <string>
 using namespace std;
 
-/*!
- * Default Constructor
- */
 
+/*!
+ * Default Constructor with no args
+ */
+Roman::Roman()
+{
+    value = 0;
+
+}
+/*!
+ * Constructor with args
+ */
+Roman::Roman(const string &str)
+{
+    convertFromRoman(str);
+
+}
 
 //This helps with testing, do not modify.
 bool checkTest(string testName, int whatItShouldBe, const Roman& obj )
@@ -29,23 +42,10 @@ bool checkTest(string testName, int whatItShouldBe, const Roman& obj )
 }
 
 
-Roman::Roman()
-{
-    value = 0;
-
-}
-
-Roman::Roman(const string &str)
-{
-    convertFromRoman(str);
-
-}
-
 /*!
  * takes the string of roman numerals and converts it to numbers
  * @param str
  */
-
 void Roman::convertFromRoman(const string &str)
 {
     unsigned int i = 0, total = 0;
@@ -97,25 +97,28 @@ void Roman::convertFromRoman(const string &str)
  * takes the numbers and converts them into roman numerals
  * @return
  */
-
 string Roman::convertToRoman() const {
     int temp = value;
     string roman;
 
     while (temp > 0){
-        while (temp > 1000){
+        while (temp > 1000)
+        {
             temp -= 1000;
             roman.append("M");
         }
-        while (temp > 500){
+        while (temp > 500)
+        {
             temp -= 500;
             roman.append("D");
         }
-        while (temp > 100) {
+        while (temp > 100)
+        {
             temp -= 100;
             roman.append("C");
         }
-        while (temp > 50) {
+        while (temp > 50)
+        {
             temp -= 50;
             roman.append("L");
         }
@@ -123,11 +126,13 @@ string Roman::convertToRoman() const {
             temp -= 10;
             roman.append("X");
         }
-        while (temp > 5) {
+        while (temp > 5)
+        {
             temp -= 5;
             roman.append("V");
         }
-        while (temp >= 1) {
+        while (temp >= 1)
+        {
             temp -= 1;
             roman.append("I");
         }
@@ -135,50 +140,85 @@ string Roman::convertToRoman() const {
 
     return roman;
 }
-
+/*!
+ *
+ * @param r
+ * @return
+ */
 Roman Roman::operator+(const Roman &r)
 {
     Roman t;
     t.value = r.value + value;
     return t;
 }
-
- Roman Roman::operator+(const int i) {
+/*!
+ *
+ * @param i
+ * @return
+ */
+Roman Roman::operator+(const int i)
+{
      Roman t;
      int temp = getValue() + i;
      t.setValue(temp);
      return t;
 }
-
-Roman Roman::operator++() {
+/*!
+ *
+ * @return
+ */
+Roman Roman::operator++()
+{
     Roman t;
     ++value;
     t.value = value;
     return t;
 }
-
-Roman operator+(const int i, Roman &r) {
+/*!
+ *
+ * @param i
+ * @param r
+ * @return
+ */
+Roman operator+(const int i, Roman &r)
+{
     Roman t;
     t.value = i + r.value;
     return t;
 }
-
-unsigned int Roman::getValue() const {
+/*!
+ * getter getsValue and returns value
+ * @return
+ */
+unsigned int Roman::getValue() const
+{
     return value;
 }
-
-void Roman::setValue(unsigned int value) {
+/*!
+ * Setter sets value function returns value
+ * @param value
+ */
+void Roman::setValue(unsigned int value)
+{
     Roman::value = value;
 }
-
-
-Roman Roman::operator+=(const Roman& r) {
+/*!
+ *plus equals function
+ * @param r
+ * @return t
+ */
+Roman Roman::operator+=(const Roman& r)
+{
     Roman t;
     value += r.getValue();
     return t;
 }
-
-void Roman::operator+=(const int r) {
+/*!
+ *  plus equals function
+ * @param r
+ */
+void Roman::operator+=(const int r)
+{
     value += r;
 }
 
@@ -197,7 +237,9 @@ bool checkTest(string testName, string whatItShouldBe, string whatItIs )
         return false;
     }
 }
-
+/*!
+ * increments the roman numerals
+ */
 void testOperatorIncrement()
 {
 //Test prefix increment
@@ -208,6 +250,9 @@ void testOperatorIncrement()
     checkTest("testOperatorIncrement #2", 1053, b);
 }
 
+/*!
+ *  testing the constructors
+ */
 void testConstructor()
 {
     //Test to make sure that empty objects are set to zero.
@@ -223,6 +268,9 @@ void testConstructor()
     checkTest("testConstructor #3", 4332, b);
 }
 
+/*!
+ *  this operator test addition
+ */
 void testOperatorPlus()
 {
     //Test adding two roman objects
@@ -248,6 +296,9 @@ void testOperatorPlus()
 
 }
 
+/*!
+ * This operator test +=
+ */
 void testOperatorPlusEqual()
 {
 //Test adding two roman objects
@@ -262,6 +313,9 @@ void testOperatorPlusEqual()
     checkTest("testOperatorPlusEqual #3", 1218, b);
 }
 
+/*!
+ * test output function
+ */
 void testOutput()
 {
     Roman a("MDCLXVI");

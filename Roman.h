@@ -7,6 +7,9 @@
 #include <string>
 using namespace std;
 
+/*!
+ * Roman class
+ */
 class Roman
 {
 private:
